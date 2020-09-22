@@ -47,6 +47,15 @@ class Tag(models.Model):
         return self.name
 
 
+class Comment(BaseModel):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    message = models.TextField()
+
+    class Meta:
+        ordering = ['-id']
+
+
 # class LikeUser(models.Model):
 #     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 #     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
