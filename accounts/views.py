@@ -27,6 +27,7 @@ def signup(request):
             signed_user = form.save()
             auth_login(request, signed_user)
             messages.success(request, "회원 가입을 환영합니다.")
+            # signed_user.send_welcome_email()
             next_url = request.GET.get('next', '/')
             return redirect(next_url)
     else:
